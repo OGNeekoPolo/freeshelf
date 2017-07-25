@@ -1,0 +1,8 @@
+%h1 Edit Book
+
+%fieldset
+  %legend= @book.title
+
+  = render 'form'
+
+  = link_to 'Back', book_path

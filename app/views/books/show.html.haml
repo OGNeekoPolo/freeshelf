@@ -1,0 +1,19 @@
+%h1 FreeShelf
+
+%h3 Book Profile Page
+
+= link_to 'Home', books_path
+%hr/
+%br/
+%fieldset
+  %legend= @book.title
+  %h3= @book.author
+  %p= @book.description
+  %a{:href => "#{@book.URL}"}= @book.URL
+  %br/
+  %br/
+  = link_to 'Edit', edit_book_path
+  %br/
+  = link_to 'Delete', book_path, method: :delete, data: {confirm: 'Are you sure?'}
+  %br/
+  = link_to 'Back', books_path

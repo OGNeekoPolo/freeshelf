@@ -1,0 +1,19 @@
+= form_for :book do |b|
+  %p
+    = b.label :title
+    %br/
+    = b.text_field :title
+  %p
+    = b.label :author
+    %br/
+    = b.text_field :author
+  %p
+    = b.label :description
+    %br/
+    = b.text_area :description
+  %p
+    = b.label :URL
+    %br/
+    = b.text_field :URL
+  %p
+    = b.submit

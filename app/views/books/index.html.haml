@@ -1,0 +1,19 @@
+%h1 Welcome to FreeShelf
+%br/
+= link_to 'Add Book', new_book_path
+%hr/
+%fieldset
+  %legend Book Shelf
+  - @books.each do |book|
+    %div
+      %h2= book.title
+      %h4= "Author: #{book.author}"
+      %p= book.description
+      %a{:href => "#{book.URL}"}= book.URL
+      %br/
+      = link_to 'Show', book_path(book)
+      %br/
+      = link_to 'Edit', edit_book_path(book)
+      %br/
+      = link_to 'Delete', book_path(book), method: :delete, data: {confirm: 'Are You sure'}
+    
