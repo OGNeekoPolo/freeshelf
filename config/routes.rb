@@ -3,12 +3,17 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
-  resources :users
+  post 'users/new', to: 'users#create'
+
   resources :books
+
+  get '/logout', to: 'sessions#destroy', as: :logout
 
   post '/books/new', to: 'books#create'
 
   post 'books/:id/edit', to: 'books#update'
 
-  root 'books#index'
+  post 'users/index', to: 'sessions#create'
+
+  root 'users#index'
 end

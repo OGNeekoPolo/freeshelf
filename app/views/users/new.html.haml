@@ -1,0 +1,35 @@
+%h1 Freeshelf
+
+= link_to 'Back', users_index_path
+%hr/
+%fieldset
+  %h2 New User Registration
+  = form_for :user do |u|
+    - if @user.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@user.errors.count, "error")
+          prohibited
+          this user from being saved:
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+
+    %p
+      = u.label :username
+      %br/
+      = u.text_field :username
+    %p
+      = u.label :password
+      %br/
+      = u.password_field :password
+    %p
+      = u.label :password_confirmation
+      %br/
+      = u.password_field :password_confirmation
+    %p
+      = u.label :email
+      %br/
+      = u.email_field :email
+    %p
+      = u.submit "Register"

@@ -1,0 +1,18 @@
+%h1 Welcome to Freeshelf
+
+= link_to 'Register New User', users_new_path
+%hr/
+%fieldset
+  %h2 Log In
+  = form_for :user do |u|
+    %p
+      = u.label :username
+      %br/
+      = u.text_field :username
+      %br/
+    %p
+      = u.label :password
+      %br/
+      = u.password_field :password
+    %p
+      = u.submit "Log In"
