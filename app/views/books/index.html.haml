@@ -1,7 +1,10 @@
 %h1 FreeShelf
 %br/
 = link_to 'Add Book', new_book_path
-= link_to 'Log Out', logout_path
+- if session[:current_user_id]
+  = link_to 'Log Out', logout_path
+- else
+  = link_to 'Log In', users_index_path
 %hr/
 %fieldset
   %legend Book Shelf
@@ -9,7 +12,7 @@
     %div
       %h2= book.title
       %h4= "Author: #{book.author}"
-      %p= "Posted by: " + book.user.username
+      %p= "Posted by: #{book.user.username}"
       %br/
       = link_to 'See Book Profile', book_path(book)
       - if session[:current_user_id] == book.user_id
