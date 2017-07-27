@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Congrats new member!!!"
       redirect_to users_index_path
     else
       render 'new'

@@ -9,11 +9,12 @@
     %div
       %h2= book.title
       %h4= "Author: #{book.author}"
-      %p= book.description
-      %a{:href => "#{book.URL}"}= book.URL
+      %p= "Posted by: " + book.user.username
       %br/
-      = link_to 'Show', book_path(book)
-      %br/
-      = link_to 'Edit', edit_book_path(book)
-      %br/
-      = link_to 'Delete', book_path(book), method: :delete, data: {confirm: 'Are You sure'}
+      = link_to 'See Book Profile', book_path(book)
+      - if session[:current_user_id] == book.user_id
+        %br/
+        = link_to 'Edit Book', edit_book_path(book)
+        %br/
+        = link_to 'Delete Book', book_path(book), method: :delete, data: {confirm: 'Are You sure'}
+= paginate @books

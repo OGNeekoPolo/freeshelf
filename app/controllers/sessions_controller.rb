@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(username: params[:user][:username])
-    if user.authenticate(params[:user][:password])
-      session[:id] = user.id
-      puts "session id is: #{session[:id]}, user id is #{user.id}"
+    @user = User.find_by(username: params[:user][:username])
+    if @user.authenticate(params[:user][:password])
+      session[:current_user_id] = @user.id
       redirect_to books_path
     end
   end
